@@ -186,10 +186,7 @@ def dump(connection, output_file, storage, *, verbosity=1):
     backend.dump(connection, tmp_filename)
 
     # Copy it to the storage.
-    with (
-        open(tmp_filename) as tmp_fp,
-        storage.open(output_file, "w") as output_fp,
-    ):
+    with open(tmp_filename) as tmp_fp, storage.open(output_file, "w") as output_fp:
         output_fp.write(tmp_fp.read())
 
 
